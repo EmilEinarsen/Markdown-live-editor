@@ -20,7 +20,6 @@ const SelectRenderType = ({handleSelection}) => {
 		>
 			<FormControlLabel 
 				value="0"
-				cecked="true"
 				control={<Radio />} 
 				label="Renderd"
 				labelPlacement="top" 

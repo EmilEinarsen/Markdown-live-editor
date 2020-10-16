@@ -1,49 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-import { RadioGroup, FormControlLabel, Radio } from '@material-ui/core'
-
-const style = {
-	width: '100%',
-	flexWrap: 'no-wrap',
-	flexDirection: 'row',
-	alignContent: 'center'
-}
+import { Tabs, Tab } from '@material-ui/core'
 
 const SelectRenderType = ({handleSelection}) => {
+	const [value, setValue] = React.useState(0)
+
 	return (
-		<RadioGroup 
-			aria-label="Mode" 
-			name="Mode" 
+		<Tabs
+			indicatorColor="primary"
+			textColor="primary"
 			onChange={handleChange}
-			style={style}
-			defaultValue="0"
+			value={value}
 		>
-			<FormControlLabel 
-				value="0"
-				control={<Radio />} 
-				label="Renderd"
-				labelPlacement="top" 
-			/>
-			
-			<FormControlLabel 
-				value="1" 
-				control={<Radio />} 
-				label="HTML" 
-				labelPlacement="top" 
-			/>
-			
-			<FormControlLabel 
-				value="-1" 
-				control={<Radio />} 
-				label="TookenList" 
-				labelPlacement="top" 
-			/>
-			
-		</RadioGroup>
+			<Tab label="Preview" />
+			<Tab label="TookenList" />
+			<Tab label="HTML" />
+		</Tabs>
 	)
 
-	function handleChange(e) {
-		handleSelection(e.target.value)
+	function handleChange(event, newValue) {
+		setValue(newValue)
+		handleSelection(newValue)
 	}
 }
 

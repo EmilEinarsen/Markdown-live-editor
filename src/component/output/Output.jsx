@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from '@material-ui/core'
+import { Box, Grid, Typography, Container, Fade } from '@material-ui/core'
 import React, { useContext, useEffect, useState } from 'react'
 import SelectOutputMode from '../SelectOutputMode'
 import markdown from 'bjork_markdown'
@@ -17,20 +17,20 @@ const Output = () => {
 				<span 
 					dangerouslySetInnerHTML={{__html: markdown(input)}}
 				></span>
-			) : select === 1 ? (
+			) : select === 2 ? (
 				<span>{markdown(input)}</span>
 			) : (
 				<span className="object">
 					{JSON.stringify(lexer(input), null, 4)}
 				</span>
 			)
-		)			
+		)
 	}, [input, select])
 
 	return (
-		<Grid container wrap="nowrap" spacing={2} className="output-container">
-			<Grid item xs zeroMinWidth>
-				<Box p={5}>
+		<Container wrap="nowrap">
+			<Box p={5}>
+				<Box className="output-container">
 					<SelectOutputMode 
 						handleSelection={handleSelection} 
 					/>
@@ -38,12 +38,12 @@ const Output = () => {
 						{output}
 					</Typography>
 				</Box>
-			</Grid>
-		</Grid>
+			</Box>
+		</Container>
 	)
 
 	function handleSelection(param) {
-		setSelect(parseInt(param))
+		setSelect(param)
 	}
 }
 

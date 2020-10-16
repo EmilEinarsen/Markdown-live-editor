@@ -11,6 +11,7 @@
     "bjork_restrain": "^2.0.12",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
+    "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3"
   },

@@ -1,23 +1,23 @@
 import React, { useContext } from 'react'
-import { Box, Container, TextareaAutosize } from '@material-ui/core';
+import { Box, Container } from '@material-ui/core';
 import { Context } from '../Context.jsx'
 import './editor.sass'
 
 
-const Editor = () => {
+const Editor = ({className}) => {
 	const { input, setInput } = useContext(Context)
 
 	function handleInput(e) {
 		setInput(e.target.value)
 	}
-
+	console.log(className)
 	return (
-		<Container className="editor-container">
-			<Box p={5}>
+		<Container className={`editor-container ${className}`}>
+			<Box py={ !className ? 5 : 0}>
 				<textarea 
 					defaultValue={input}
 					onChange={handleInput}
-				/>
+				></textarea>
 			</Box>
 		</Container>
 	)

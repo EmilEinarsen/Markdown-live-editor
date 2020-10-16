@@ -1,19 +1,29 @@
-import { Grid } from '@material-ui/core'
+import { Container, Grid, useMediaQuery } from '@material-ui/core'
 import React from 'react'
 import Editor from './component/editor/Editor'
 import Output from './component/output/Output'
 import InputContext from './component/Context'
 
 const App = () => {
+	const matches = useMediaQuery('(min-width:1100px)')
+
 	return (
-	<Grid container xs={12}>
+	<Grid container item xs={12}>
 		<InputContext>
-			<Grid sm={6} >
-				<Editor />
-			</Grid>
-			<Grid sm={6}>
-				<Output />
-			</Grid>
+			{ matches ? (
+				<>
+					<Grid item sm={6} >
+						<Editor />
+					</Grid>
+					<Grid item sm={6}>
+						<Output />
+					</Grid>
+				</>
+			) : (
+				<Container>
+					<Output />
+				</Container>
+			)}
 		</InputContext>
 	</Grid>
 )}

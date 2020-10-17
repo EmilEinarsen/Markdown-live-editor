@@ -10,7 +10,6 @@ const Editor = ({className}) => {
 	function handleInput(e) {
 		setInput(e.target.value)
 	}
-	console.log(className)
 	return (
 		<Container className={`editor-container ${className}`}>
 			<Box py={ !className ? 5 : 0}>

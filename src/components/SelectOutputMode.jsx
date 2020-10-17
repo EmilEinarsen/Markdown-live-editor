@@ -1,17 +1,18 @@
 import React, { useState } from 'react'
 
-import { Tabs, Tab, useMediaQuery, Box } from '@material-ui/core'
+import { Tabs, Tab, useMediaQuery, AppBar } from '@material-ui/core'
 
 const SelectRenderType = ({handleSelection}) => {
 	const [value, setValue] = useState(0)
 	const matches = useMediaQuery('(min-width:1100px)');
 
 	return (
-		<Box>
+		<AppBar>
 			{ matches ? (
 				<Tabs
 					indicatorColor="primary"
 					textColor="primary"
+					color="default"
 					variant="fullWidth"
 					onChange={handleChange}
 					value={value}
@@ -24,6 +25,7 @@ const SelectRenderType = ({handleSelection}) => {
 				<Tabs
 					indicatorColor="primary"
 					textColor="primary"
+					color="default"
 					onChange={handleChange}
 					value={value}
 				>
@@ -33,7 +35,7 @@ const SelectRenderType = ({handleSelection}) => {
 					<Tab label="HTML" value={2}/>
 				</Tabs>
 			)}
-		</Box>
+		</AppBar>
 	)
 
 	function handleChange(event, newValue) {

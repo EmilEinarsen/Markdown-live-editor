@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import { FormControlLabel, Switch, Icon, createMuiTheme } from '@material-ui/core'
+import React from 'react'
+import { FormControlLabel, Switch, Icon } from '@material-ui/core'
 import Brightness4 from '@material-ui/icons/Brightness4';
 import Brightness7 from '@material-ui/icons/Brightness7'
 
-const style = {
+const {outer, icon} = {
 	outer: {
 		position: 'absolute', 
 		right: '40px',
@@ -14,27 +14,25 @@ const style = {
 	}
 }
 
-function DarkModeToggle({handleTheme}) {
-	const {outer, icon} = style
-	let [mode, setMode] = useState(false)
-	const handleSwitch = (e, value) => {
-		setMode(value)
-		handleTheme(
-			createMuiTheme({
-				palette: {
-					type:  value ? 'dark' : 'light'
-				}
-			})
-		)
-	}
-
+const DarkModeToggle = ({ 
+	useState: [ 
+		state, 
+		setState 
+	] 
+}) => {
 	return (
 		<FormControlLabel
 			style={outer}
-			control={<Switch color="primary" />}
-			label={<Icon children={ mode ? <Brightness4 style={icon} /> : <Brightness7 style={icon} /> } />}
+			control={<Switch checked={state} color="primary" />}
+			label={
+				<Icon children={ 
+					state ? <Brightness4 style={icon} /> 
+						: <Brightness7 style={icon} /> 
+					} 
+				/>
+			}
 			labelPlacement="start"
-			onChange={handleSwitch}
+			onChange={(e, value) => setState(value)}
 		/>
 	)
 }

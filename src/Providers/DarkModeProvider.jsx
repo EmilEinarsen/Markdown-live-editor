@@ -38,7 +38,7 @@ function DarkModeProvider({children}) {
 				{children}
 			</MuiThemeProvider>
 		</useDarkMode.Provider>
-	)
+	) 
 }
 
 export default DarkModeProvider 

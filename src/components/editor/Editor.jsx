@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
-import { Box, Container } from '@material-ui/core';
-import { useData } from '../DataProvider'
+import { Box } from '@material-ui/core';
+import { useData } from '../../Providers/DataProvider'
 import './editor.sass'
 
 
@@ -10,14 +10,12 @@ const Editor = ({className}) => {
 	} = useContext(useData)
 	
 	return (
-		<Container className={`editor-container ${className}`}>
-			<Box py={ !className ? 5 : 0}>
-				<textarea 
-					defaultValue={input}
-					onChange={e => setInput(e.target.value)}
-				></textarea>
-			</Box>
-		</Container>
+		<Box className={`editor-container ${className}`}>
+			<textarea 
+				defaultValue={input}
+				onChange={e => setInput(e.target.value)}
+			/>
+		</Box>
 	)
 }
 
